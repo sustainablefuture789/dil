@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Sarix recovers silver and copper from end-of-life solar panels using low-temperature electrochemistry. Victoria, Australia.">
+<meta property="og:title" content="Sarix">
+<meta property="og:description" content="Panels retire. Silver returns. Electrochemical recovery of silver and copper from end-of-life solar panels.">
+<title>Sarix | Silver &amp; Copper Recovery from End-of-Life Solar Panels</title>
+<link rel="canonical" href="https://sarix.com.au/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Big+Shoulders+Display:wght@600;800&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: dark single-theme site. 3D hero (panel -> electrochemical cell) with text left; globe problem band; three-step process; spec tiles; contact. Silver + copper are the only accents. */
+:root{
+  --bg:#0a0e13; --surface:#11171f; --line:#1e2731; --fg:#e7ebee; --muted:#8a96a3;
+  --silver:#cfd6dd; --copper:#d4824a; --glass:#5d8fb8;
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-body:"IBM Plex Sans","Segoe UI",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 var(--f-body);margin:0;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--copper);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:24px}
+.eyebrow{font:500 12px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--copper)}
+h1,h2,h3{font-family:var(--f-display);font-weight:800;line-height:.95;margin:0;text-wrap:balance;letter-spacing:.005em}
+h2{font-size:clamp(40px,6vw,72px);text-transform:uppercase}
+p{margin:0}
+
+/* nav */
+nav.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;align-items:center;gap:28px;height:60px}
+.mark{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 24px var(--f-display);letter-spacing:.12em}
+.mark i{width:18px;height:18px;border-radius:50%;background:conic-gradient(var(--silver) 0 50%,var(--copper) 0 100%);display:block}
+nav.top .links{margin-left:auto;display:flex;gap:24px;font-size:14px;color:var(--muted)}
+nav.top .links a{text-decoration:none}
+nav.top .links a:hover{color:var(--fg)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:2px;font:500 14px var(--f-body);text-decoration:none;border:1px solid var(--line);color:var(--fg);background:transparent;cursor:pointer}
+.btn.primary{background:var(--copper);border-color:var(--copper);color:#140b04}
+.btn:hover{border-color:var(--silver)}
+@media (max-width:720px){nav.top .links{display:none}}
+
+/* hero */
+.hero{position:relative;height:clamp(560px,82vh,820px);overflow:hidden;border-bottom:1px solid var(--line)}
+#hero3d{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero .wrap{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;gap:22px;pointer-events:none}
+.hero .wrap > *{pointer-events:auto;max-width:520px}
+.hero h1{font-size:clamp(52px,8.4vw,112px);text-transform:uppercase}
+.hero h1 em{font-style:normal;color:var(--silver);background:linear-gradient(90deg,var(--silver),#fff 45%,var(--silver));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero .sub{font-size:18px;color:#c3cbd3;max-width:460px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.chip{position:absolute;z-index:3;font:500 11.5px var(--f-mono);color:var(--fg);background:rgba(10,14,19,.72);border:1px solid var(--line);padding:4px 9px;border-radius:2px;white-space:nowrap;transform:translate(-50%,-50%);pointer-events:none;transition:opacity .4s}
+.chip b{font-weight:500}
+.chip.ag b{color:var(--silver)} .chip.cu b{color:var(--copper)}
+.hero-fade{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,var(--bg) 0%,rgba(10,14,19,.85) 30%,rgba(10,14,19,0) 60%)}
+@media (max-width:860px){
+  .hero{height:auto;min-height:640px}
+  .hero .wrap{justify-content:flex-end;padding-block:48px}
+  .hero-fade{background:linear-gradient(0deg,var(--bg) 0%,rgba(10,14,19,.9) 45%,rgba(10,14,19,.1) 80%)}
+  .chip{display:none}
+}
+
+/* problem */
+section{padding-block:96px;border-bottom:1px solid var(--line)}
+.problem .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
+.globe-box{position:relative;aspect-ratio:1;max-width:520px;width:100%;justify-self:center}
+#globe{width:100%;height:100%;display:block}
+.stats{display:grid;gap:28px;margin-top:36px}
+.stat{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:20px;align-items:baseline;padding-top:20px;border-top:1px solid var(--line)}
+.stat .n{font:800 clamp(44px,5vw,60px)/1 var(--f-display);color:var(--fg);font-variant-numeric:tabular-nums}
+.stat .n small{font-size:.5em;color:var(--muted);margin-left:4px}
+.stat p{color:var(--muted);font-size:15px}
+.note{margin-top:28px;color:var(--muted);font-size:15px;max-width:52ch}
+.markets{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:14px;font:12px var(--f-mono);color:var(--muted);justify-content:center}
+.markets span::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--copper);margin-right:6px;vertical-align:middle}
+.src{font:11.5px var(--f-mono);color:#5d6874;margin-top:24px}
+@media (max-width:860px){.problem .grid{grid-template-columns:1fr}.stat{grid-template-columns:1fr;gap:4px}}
+
+/* technology */
+.tech-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px;margin-bottom:48px}
+.tech-head p{color:var(--muted);max-width:40ch}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
+.step{padding:28px 28px 32px 0;display:grid;gap:12px;align-content:start}
+.step + .step{padding-left:28px;border-left:1px solid var(--line)}
+.step .k{font:500 12px var(--f-mono);color:var(--copper);letter-spacing:.1em}
+.step h3{font-size:34px;text-transform:uppercase}
+.step p{color:var(--muted);font-size:15px}
+@media (max-width:860px){.steps{grid-template-columns:1fr}.step,.step+.step{padding:24px 0;border-left:0;border-bottom:1px solid var(--line)}}
+.scale{margin-top:56px;background:var(--surface);border:1px solid var(--line);padding:28px;border-radius:2px}
+.scale-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.scale-top .t{font:500 13px var(--f-mono);color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.scale svg{width:100%;height:auto;display:block}
+.scale text{font-family:var(--f-mono)}
+
+/* specs */
+.specs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.spec{background:var(--bg);padding:32px 24px;display:grid;gap:10px;align-content:start}
+.spec .v{font:800 52px/1 var(--f-display);font-variant-numeric:tabular-nums}
+.spec .v.cu{color:var(--copper)} .spec .v.ag{color:var(--silver)}
+.spec p{color:var(--muted);font-size:14.5px}
+@media (max-width:960px){.specs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.specs{grid-template-columns:1fr}}
+
+/* partners */
+.who{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:48px;align-items:start}
+.who ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.who li{display:flex;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);font-size:17px}
+.who li span{font:12px var(--f-mono);color:var(--muted);text-align:right}
+@media (max-width:860px){.who{grid-template-columns:1fr}}
+
+/* contact */
+.contact{border-bottom:0;padding-block:110px}
+.contact .box{display:grid;gap:28px;justify-items:start}
+.contact h2{font-size:clamp(44px,7vw,92px)}
+.mail{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.mail .addr{font:500 clamp(20px,3vw,28px) var(--f-mono);color:var(--silver);user-select:all}
+.meta{color:var(--muted);font:13px var(--f-mono)}
+footer{border-top:1px solid var(--line);padding-block:28px;color:#5d6874;font:12px var(--f-mono)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+/* logo */
+.logo{font:900 26px/1 "Archivo Black","Arial Black",Arial,sans-serif;letter-spacing:.01em;text-decoration:none;display:flex}
+.logo span:nth-child(1){color:#4285f4}.logo span:nth-child(2){color:#ea4335}.logo span:nth-child(3){color:#fbbc05}.logo span:nth-child(4){color:#4285f4}.logo span:nth-child(5){color:#34a853}
+
+/* process line */
+.line3d{padding-block:96px}
+.line3d .head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px;margin-bottom:28px}
+.line3d .head p{color:var(--muted);max-width:44ch}
+.stage3d{position:relative;aspect-ratio:2.1/1;min-height:420px;width:100%;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:#0c1218}
+#line3d{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:grab;touch-action:none}
+#line3d:active{cursor:grabbing}
+.lbl3d{position:absolute;transform:translate(-50%,-100%);font:500 11.5px var(--f-mono);color:var(--fg);background:rgba(10,14,19,.8);border:1px solid var(--line);padding:4px 9px;border-radius:2px;white-space:nowrap;pointer-events:none;transition:opacity .3s}
+.lbl3d.big{font-size:12.5px;border-color:#3a4652}
+.lbl3d.big b{color:var(--copper);font-weight:500;margin-right:6px}
+.lbl3d.small{font-size:10.5px;color:#aeb8c2;padding:2px 7px}
+.views{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.views button{font:500 13px var(--f-mono);padding:9px 14px;border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:2px;cursor:pointer}
+.views button[aria-pressed="true"]{color:var(--bg);background:var(--silver);border-color:var(--silver)}
+.views button:hover{color:var(--fg);border-color:var(--silver)}
+.views button[aria-pressed="true"]:hover{color:var(--bg)}
+.cap{margin-top:14px;color:var(--muted);font-size:15px;min-height:1.6em}
+.hint3d{position:absolute;right:12px;bottom:10px;font:11px var(--f-mono);color:#6d7884;pointer-events:none}
+@media (max-width:760px){.stage3d{aspect-ratio:auto;height:460px}.lbl3d.small{display:none}}
+
+/* contact form */
+.contact .grid h2{font-size:clamp(38px,4.6vw,60px)}
+.contact .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:56px;align-items:start}
+form.cf{display:grid;gap:14px;background:var(--surface);border:1px solid var(--line);padding:28px;border-radius:4px}
+.cf .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+.cf label{display:grid;gap:6px;font:500 12px var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.cf input,.cf select,.cf textarea{font:16px var(--f-body);color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:2px;padding:12px 14px;width:100%}
+.cf textarea{min-height:130px;resize:vertical}
+.cf input:focus,.cf select:focus,.cf textarea:focus{outline:none;border-color:var(--copper)}
+.cf .hp{position:absolute;left:-9999px}
+.cf .foot{display:flex;flex-wrap:wrap;align-items:center;gap:14px;justify-content:space-between}
+.cf .note{font-size:13px;color:var(--muted)}
+.cf .status{font-size:14.5px;padding:12px 14px;border-radius:2px;border:1px solid var(--line)}
+.cf .status.ok{border-color:#2e7d4f;color:#9fe0b8}
+.cf .status.err{border-color:#a04545;color:#f0b4b4}
+@media (max-width:860px){.contact .grid{grid-template-columns:1fr}.cf .row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav class="top" aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Sarix home"><span>S</span><span>A</span><span>R</span><span>I</span><span>X</span></a>
+    <div class="links"><a href="#problem">Problem</a><a href="#technology">Technology</a><a href="#process">Process</a><a href="#partners">Partners</a><a href="#contact">Contact</a></div>
+    <a class="btn primary" href="#contact">Partner with us</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <canvas id="hero3d" aria-label="3D view: a solar panel releasing silver and copper into an electrochemical cell"></canvas>
+  <div class="hero-fade"></div>
+  <div class="wrap">
+    <div class="eyebrow">Electrochemical metal recovery · Melbourne</div>
+    <h1>Panels retire. <em>Silver</em> returns.</h1>
+    <p class="sub">Sarix recovers silver and copper from end-of-life solar panels with low-temperature electrochemistry, as separate, high-purity metals.</p>
+    <div class="cta"><a class="btn primary" href="#contact">Partner with Sarix</a><a class="btn" href="#technology">How it works</a></div>
+  </div>
+  <div class="chip ag" id="chipAg"><b>Ag⁺ + e⁻ → Ag</b> &nbsp;+0.80 V</div>
+  <div class="chip cu" id="chipCu"><b>Cu²⁺ + 2e⁻ → Cu</b> &nbsp;+0.34 V</div>
+</header>
+
+<section class="problem" id="problem">
+  <div class="wrap grid">
+    <div>
+      <div class="eyebrow">A global problem</div>
+      <h2 style="margin-top:14px">The first solar wave is coming down.</h2>
+      <div class="stats">
+        <div class="stat"><div class="n">60–78<small>Mt</small></div><p>Solar panel waste expected worldwide by 2050.</p></div>
+        <div class="stat"><div class="n">1<small>Mt+</small></div><p>Panel waste in Australia by the mid-2030s.</p></div>
+        <div class="stat"><div class="n">$15<small>bn</small></div><p>Recoverable material value worldwide by 2050 (US$).</p></div>
+      </div>
+      <p class="note">Most recycling keeps the glass and aluminium. The silver and copper, the most valuable part of a panel, are lost or sent to smelters.</p>
+      <p class="src">Sources: IRENA &amp; IEA-PVPS (2016); UNSW/ACAP scoping study (2024).</p>
+    </div>
+    <div>
+      <div class="globe-box"><canvas id="globe" aria-label="Rotating globe marking the world's largest solar markets"></canvas></div>
+      <div class="markets"><span>China</span><span>Europe</span><span>United States</span><span>India</span><span>Japan</span><span>Australia</span><span>Brazil</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="technology">
+  <div class="wrap">
+    <div class="tech-head">
+      <div><div class="eyebrow">Technology</div><h2 style="margin-top:14px">Three steps.<br>Two metals.<br>No furnace.</h2></div>
+      <p>Electricity does the separating. Each metal plates out at its own potential.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="k">STEP 1</div><h3>Liberate</h3><p>Cells and ribbons are separated from glass, frame and polymer.</p></div>
+      <div class="step"><div class="k">STEP 2</div><h3>Dissolve</h3><p>A low-temperature leach takes silver and copper into solution.</p></div>
+      <div class="step"><div class="k">STEP 3</div><h3>Plate</h3><p>Controlled-potential electrowinning recovers silver first, then copper.</p></div>
+    </div>
+    <div class="scale">
+      <div class="scale-top"><span class="t">Reduction potential, V vs SHE</span><span class="t" style="color:var(--copper)">Selective window ≈ 0.46 V</span></div>
+      <svg viewBox="0 0 1000 150" role="img" aria-label="Silver deposits at +0.80 volts and copper at +0.34 volts, leaving a 0.46 volt window">
+        <rect x="40" y="70" width="920" height="4" fill="#1e2731"/>
+        <rect x="353" y="62" width="423" height="20" fill="#d4824a" fill-opacity=".14"/>
+        <g fill="#8a96a3" font-size="13">
+          <text x="40" y="112" text-anchor="middle">0.0</text><text x="270" y="112" text-anchor="middle">+0.25</text><text x="500" y="112" text-anchor="middle">+0.50</text><text x="730" y="112" text-anchor="middle">+0.75</text><text x="960" y="112" text-anchor="middle">+1.00</text>
+        </g>
+        <g fill="#1e2731"><rect x="39" y="66" width="2" height="12"/><rect x="269" y="66" width="2" height="12"/><rect x="499" y="66" width="2" height="12"/><rect x="729" y="66" width="2" height="12"/><rect x="959" y="66" width="2" height="12"/></g>
+        <circle cx="353" cy="72" r="10" fill="#d4824a"/><text x="353" y="40" text-anchor="middle" font-size="15" fill="#d4824a">Cu²⁺/Cu  +0.34</text>
+        <circle cx="776" cy="72" r="10" fill="#cfd6dd"/><text x="776" y="40" text-anchor="middle" font-size="15" fill="#cfd6dd">Ag⁺/Ag  +0.80</text>
+        <text x="564" y="140" text-anchor="middle" font-size="13" fill="#8a96a3">silver plates here, copper stays in solution</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="line3d" id="process">
+  <div class="wrap">
+    <div class="head">
+      <div><div class="eyebrow">Inside the process</div><h2 style="margin-top:14px">From panel to pure metal.</h2></div>
+      <p>Follow the metals through the line: panel layers, low-temperature leach, then two electrowinning cells that plate silver and copper separately.</p>
+    </div>
+    <div class="stage3d" id="stage3d">
+      <canvas id="line3d" aria-label="Interactive 3D process line: exploded solar panel, leach reactor, silver cell and copper cell"></canvas>
+      <div id="lbls"></div>
+      <div class="hint3d">Drag to rotate</div>
+    </div>
+    <div class="views" role="group" aria-label="Choose a view">
+      <button type="button" data-v="0" aria-pressed="true">Overview</button>
+      <button type="button" data-v="1" aria-pressed="false">1 · Panel</button>
+      <button type="button" data-v="2" aria-pressed="false">2 · Leach</button>
+      <button type="button" data-v="3" aria-pressed="false">3 · Silver cell</button>
+      <button type="button" data-v="4" aria-pressed="false">4 · Copper cell</button>
+    </div>
+    <p class="cap" id="cap3d" aria-live="polite">The full line, from end-of-life panel to separate silver and copper.</p>
+  </div>
+</section>
+
+
+<section>
+  <div class="wrap">
+    <div class="specs">
+      <div class="spec"><div class="v cu">&lt;55 °C</div><p>Process temperature. No furnace, no smelter.</p></div>
+      <div class="spec"><div class="v ag">Ag + Cu</div><p>Recovered as separate, high-purity metals.</p></div>
+      <div class="spec"><div class="v">Modular</div><p>Tanks sized for collection depots, not refineries.</p></div>
+      <div class="spec"><div class="v">Electric</div><p>Built to run on renewable power.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="partners">
+  <div class="wrap who">
+    <div><div class="eyebrow">Partners</div><h2 style="margin-top:14px">Built with industry.</h2></div>
+    <ul>
+      <li>Solar recyclers &amp; collectors<span>Feedstock · sites</span></li>
+      <li>Panel manufacturers<span>Factory rejects · licensing</span></li>
+      <li>Research laboratories<span>Analysis · validation</span></li>
+      <li>Metal buyers &amp; refiners<span>Offtake</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap grid">
+    <div class="box">
+      <div class="eyebrow">Contact</div>
+      <h2>Have panels, data or capital?<br>Let’s talk.</h2>
+      <div class="mail"><span class="addr" id="addr">info@sarix.com.au</span><button class="btn" id="copy" type="button">Copy email</button></div>
+      <div class="meta">Sarix Pty Limited · Victoria, Australia · ACN 698 649 188</div>
+    </div>
+    <form class="cf" id="cf" novalidate>
+      <div class="row">
+        <label for="cf-name">Name<input id="cf-name" name="name" autocomplete="name" required></label>
+        <label for="cf-org">Organisation<input id="cf-org" name="organisation" autocomplete="organization"></label>
+      </div>
+      <div class="row">
+        <label for="cf-email">Email<input id="cf-email" name="email" type="email" autocomplete="email" required></label>
+        <label for="cf-topic">I’m interested in
+          <select id="cf-topic" name="topic">
+            <option>Supplying end-of-life panels</option>
+            <option>Research collaboration</option>
+            <option>Investment</option>
+            <option>Buying recovered metals</option>
+            <option>Licensing</option>
+            <option>Other</option>
+          </select></label>
+      </div>
+      <label for="cf-msg">Message<textarea id="cf-msg" name="message" required></textarea></label>
+      <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="foot"><span class="note">We reply within two business days.</span><button class="btn primary" type="submit" id="cf-send">Send message</button></div>
+      <div class="status" id="cf-status" hidden></div>
+    </form>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© 2026 Sarix Pty Limited</span><span>Recovering the metals the world throws away.</span></div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  const copyBtn=document.getElementById('copy');
+  copyBtn.addEventListener('click',()=>{
+    const t='info@sarix.com.au';
+    const done=()=>{copyBtn.textContent='Copied';setTimeout(()=>copyBtn.textContent='Copy email',1600);};
+    try{navigator.clipboard.writeText(t).then(done,()=>{selectAddr();});}catch(e){selectAddr();}
+  });
+  function selectAddr(){const r=document.createRange();r.selectNodeContents(document.getElementById('addr'));const s=getSelection();s.removeAllRanges();s.addRange(r);copyBtn.textContent='Press Ctrl+C';}
+  if(!window.THREE)return;
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---------- shared helpers ----------
+  function envFor(renderer){
+    const pm=new THREE.PMREMGenerator(renderer);const es=new THREE.Scene();
+    const room=new THREE.Mesh(new THREE.BoxGeometry(20,10,20),new THREE.MeshBasicMaterial({color:0x0c1117,side:THREE.BackSide}));es.add(room);
+    const lp=(w,h,x,y,z,c,i)=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({color:new THREE.Color(c).multiplyScalar(i),side:THREE.DoubleSide}));m.position.set(x,y,z);m.lookAt(0,0,0);es.add(m);};
+    lp(8,2,0,4.8,0,'#ffffff',3);lp(3,6,-9.5,1,2,'#cfe0ff',1.6);lp(3,4,9.5,0,-3,'#ffd9b8',1.4);lp(10,1.2,0,-1,9.5,'#ffffff',.8);
+    const t=pm.fromScene(es,0.03).texture;pm.dispose();return t;
+  }
+  function dotTex(){const c=document.createElement('canvas');c.width=c.height=64;const g=c.getContext('2d');const gr=g.createRadialGradient(32,32,0,32,32,32);gr.addColorStop(0,'rgba(255,255,255,1)');gr.addColorStop(.35,'rgba(255,255,255,.55)');gr.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=gr;g.fillRect(0,0,64,64);return new THREE.CanvasTexture(c);}
+  const DOT=dotTex();
+  function visible(el,cb){if(!('IntersectionObserver' in window)){cb(true);return;}new IntersectionObserver(es=>es.forEach(e=>cb(e.isIntersecting)),{threshold:0}).observe(el);}
+
+  // ---------- HERO ----------
+  const hc=document.getElementById('hero3d'), hero=hc.parentElement;
+  const R=new THREE.WebGLRenderer({canvas:hc,antialias:true,alpha:false});
+  R.setPixelRatio(Math.min(2,devicePixelRatio||1));R.outputEncoding=THREE.sRGBEncoding;R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=1.05;
+  const S=new THREE.Scene();S.background=new THREE.Color(0x0a0e13);S.environment=envFor(R);S.fog=new THREE.Fog(0x0a0e13,9,18);
+  const cam=new THREE.PerspectiveCamera(32,1,.1,60);
+  const key=new THREE.DirectionalLight(0xffffff,1.6);key.position.set(3,5,4);S.add(key);
+  const rim=new THREE.DirectionalLight(0xffb27a,1.1);rim.position.set(-4,1,-3);S.add(rim);
+  S.add(new THREE.AmbientLight(0x334455,.4));
+  const world=new THREE.Group();S.add(world);
+
+  // solar panel texture (6 x 10 mono cells, busbars, fingers)
+  function panelTexture(){
+    const cw=170,ch=170,gap=8,cols=6,rows=10,W=cols*(cw+gap)+gap,H=rows*(ch+gap)+gap;
+    const c=document.createElement('canvas');c.width=W;c.height=H;const g=c.getContext('2d');
+    g.fillStyle='#dfe4e8';g.fillRect(0,0,W,H);
+    for(let r=0;r<rows;r++)for(let k=0;k<cols;k++){
+      const x=gap+k*(cw+gap),y=gap+r*(ch+gap),cut=20;
+      const gr=g.createLinearGradient(x,y,x+cw,y+ch);gr.addColorStop(0,'#0d1522');gr.addColorStop(.5,'#111c2c');gr.addColorStop(1,'#0a111b');
+      g.fillStyle=gr;g.beginPath();g.moveTo(x+cut,y);g.lineTo(x+cw-cut,y);g.lineTo(x+cw,y+cut);g.lineTo(x+cw,y+ch-cut);g.lineTo(x+cw-cut,y+ch);g.lineTo(x+cut,y+ch);g.lineTo(x,y+ch-cut);g.lineTo(x,y+cut);g.closePath();g.fill();
+      g.strokeStyle='rgba(190,200,210,.16)';g.lineWidth=1;for(let f=y+4;f<y+ch;f+=4){g.beginPath();g.moveTo(x+2,f);g.lineTo(x+cw-2,f);g.stroke();}
+    }
+    g.fillStyle='#c9d0d7';for(let k=0;k<cols;k++)for(let b=1;b<=5;b++){const bx=gap+k*(cw+gap)+b*cw/6;g.fillRect(bx-1.5,0,3,H);}
+    g.fillStyle='#e9edf0';g.fillRect(0,0,W,gap);g.fillRect(0,H-gap,W,gap);
+    const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;t.anisotropy=8;return t;
+  }
+  const panel=new THREE.Group();world.add(panel);
+  const PW=1.0,PH=1.68;
+  const face=new THREE.Mesh(new THREE.BoxGeometry(PW,PH,.035),[
+    new THREE.MeshStandardMaterial({color:0xb9c0c6,metalness:1,roughness:.35}),new THREE.MeshStandardMaterial({color:0xb9c0c6,metalness:1,roughness:.35}),
+    new THREE.MeshStandardMaterial({color:0xb9c0c6,metalness:1,roughness:.35}),new THREE.MeshStandardMaterial({color:0xb9c0c6,metalness:1,roughness:.35}),
+    new THREE.MeshPhysicalMaterial({map:panelTexture(),roughness:.32,metalness:.15,clearcoat:1,clearcoatRoughness:.04,envMapIntensity:1.3}),
+    new THREE.MeshStandardMaterial({color:0xeef1f3,roughness:.8})]);
+  panel.add(face);
+  const fm=new THREE.MeshStandardMaterial({color:0xbfc6cc,metalness:1,roughness:.28});
+  [[PW+.06,.04,0,PH/2+.015],[PW+.06,.04,0,-PH/2-.015]].forEach(a=>{const m=new THREE.Mesh(new THREE.BoxGeometry(a[0],a[1],.07),fm);m.position.set(a[2],a[3],0);panel.add(m);});
+  [[-PW/2-.015],[PW/2+.015]].forEach(a=>{const m=new THREE.Mesh(new THREE.BoxGeometry(.04,PH+.06,.07),fm);m.position.set(a[0],0,0);panel.add(m);});
+  panel.position.set(-.9,.12,0);panel.rotation.set(-.18,.55,.04);
+
+  // electrochemical cell
+  const cell=new THREE.Group();world.add(cell);cell.position.set(.78,-.38,.15);cell.rotation.y=-.42;
+  const CW=1.25,CH=.95,CD=.62;
+  cell.add(new THREE.Mesh(new THREE.BoxGeometry(CW,CH,CD),new THREE.MeshPhysicalMaterial({color:0xdfefff,transparent:true,opacity:.14,roughness:.02,metalness:0,clearcoat:1,envMapIntensity:1.6,depthWrite:false})));
+  const edges=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(CW,CH,CD)),new THREE.LineBasicMaterial({color:0x6f8597,transparent:true,opacity:.6}));cell.add(edges);
+  const liquid=new THREE.Mesh(new THREE.BoxGeometry(CW-.04,CH*.72,CD-.04),new THREE.MeshPhysicalMaterial({color:0x2f78c4,transparent:true,opacity:.28,roughness:.1,depthWrite:false,emissive:0x0b2a4a,emissiveIntensity:.5}));
+  liquid.position.y=-CH*.14+-.0;cell.add(liquid);
+  const surfaceY=liquid.position.y+CH*.36;
+  const plate=(x,col,met,rough)=>{const m=new THREE.Mesh(new THREE.BoxGeometry(.025,CH*.86,CD*.8),new THREE.MeshStandardMaterial({color:col,metalness:met,roughness:rough}));m.position.set(x,.02,0);cell.add(m);
+    const rod=new THREE.Mesh(new THREE.CylinderGeometry(.012,.012,.32,10),new THREE.MeshStandardMaterial({color:0xb87333,metalness:1,roughness:.3}));rod.position.set(x,CH/2+.12,0);cell.add(rod);return m;};
+  const xAg=-.38,xAn=0,xCu=.38;
+  plate(xAg,0x8e979f,1,.42);plate(xAn,0x2a3138,.6,.6);plate(xCu,0x8e979f,1,.42);
+  const bus=new THREE.Mesh(new THREE.BoxGeometry(CW*.9,.03,.05),new THREE.MeshStandardMaterial({color:0xb87333,metalness:1,roughness:.3}));bus.position.set(0,CH/2+.28,0);cell.add(bus);
+  // deposits (instanced crystals)
+  function deposits(x,color,side){
+    const n=260,g=new THREE.IcosahedronGeometry(.018,0),m=new THREE.MeshStandardMaterial({color,metalness:1,roughness:.22,envMapIntensity:1.4});
+    const im=new THREE.InstancedMesh(g,m,n);im.count=0;cell.add(im);const d=new THREE.Object3D();const pts=[];
+    for(let i=0;i<n;i++){d.position.set(x+side*(.018+Math.random()*.02),surfaceY-.05-Math.random()*(CH*.62),(Math.random()-.5)*CD*.74);d.rotation.set(Math.random()*6,Math.random()*6,Math.random()*6);const s=.6+Math.random()*1.3;d.scale.set(s,s*1.4,s);d.updateMatrix();im.setMatrixAt(i,d.matrix);pts.push(d.position.clone());}
+    im.instanceMatrix.needsUpdate=true;return {im,pts,n};
+  }
+  const depAg=deposits(xAg,0xe4e8ec,1), depCu=deposits(xCu,0xc8743c,-1);
+  // particles
+  function stream(color,count,size){
+    const geo=new THREE.BufferGeometry();const pos=new Float32Array(count*3);geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+    const mat=new THREE.PointsMaterial({color,size,map:DOT,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,sizeAttenuation:true});
+    const pts=new THREE.Points(geo,mat);S.add(pts);
+    const st=[];for(let i=0;i<count;i++)st.push({t:Math.random(),sp:.12+Math.random()*.1,a:new THREE.Vector3(),c1:new THREE.Vector3(),c2:new THREE.Vector3(),b:new THREE.Vector3()});
+    return {pts,pos,st,geo};
+  }
+  const sAg=stream(0xf2f6fa,70,.085), sCu=stream(0xff8a3d,55,.085);
+  const tmp=new THREE.Vector3();
+  function respawn(p,target){
+    // start on panel face (world coords)
+    tmp.set((Math.random()-.5)*PW*.9,(Math.random()-.5)*PH*.9,.03);p.a.copy(panel.localToWorld(tmp.clone()));
+    p.b.set(target,surfaceY-.08-Math.random()*.45,(Math.random()-.5)*CD*.6);cell.localToWorld(p.b);
+    p.c1.copy(p.a).add(new THREE.Vector3(.6,.9+Math.random()*.4,.4));
+    p.c2.set(target*.6,surfaceY+.7,0);cell.localToWorld(p.c2);
+  }
+  world.updateMatrixWorld(true);
+  sAg.st.forEach(p=>respawn(p,xAg+.05));sCu.st.forEach(p=>respawn(p,xCu-.05));
+  function bez(out,p,t){const u=1-t;out.set(0,0,0).addScaledVector(p.a,u*u*u).addScaledVector(p.c1,3*u*u*t).addScaledVector(p.c2,3*u*t*t).addScaledVector(p.b,t*t*t);return out;}
+  // bubbles at anode
+  const bub=stream(0x9fd0ff,40,.025);cell.add(bub.pts);
+  bub.st.forEach(b=>{b.a.set(xAn+(Math.random()-.5)*.05,surfaceY-.6*Math.random()-.05,(Math.random()-.5)*CD*.6);});
+
+  // floor glow
+  const floor=new THREE.Mesh(new THREE.CircleGeometry(3.2,64),new THREE.MeshBasicMaterial({color:0x111a24,transparent:true,opacity:.7}));floor.rotation.x=-Math.PI/2;floor.position.y=-.86;/* floor removed */
+
+  // layout + resize
+  let narrow=false;
+  function layoutHero(){const w=hero.clientWidth,h=hero.clientHeight;R.setSize(w,h,false);cam.aspect=w/h;narrow=w<860;
+    if(narrow){cam.position.set(0,.35,6.1);world.position.set(0,.55,0);world.scale.setScalar(.82);}
+    else{cam.position.set(1.05,.25,5.1);world.position.set(1.95,0,0);world.scale.setScalar(.92);}
+    cam.lookAt(narrow?0:1.05,0,0);cam.updateProjectionMatrix();renderHero(0);}
+  new ResizeObserver(layoutHero).observe(hero);
+
+  // chips
+  const chipAg=document.getElementById('chipAg'),chipCu=document.getElementById('chipCu');
+  function place(el,local){const v=local.clone();cell.localToWorld(v);v.project(cam);el.style.left=((v.x*.5+.5)*hero.clientWidth)+'px';el.style.top=((-v.y*.5+.5)*hero.clientHeight)+'px';}
+
+  let mx=0,my=0;hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect();mx=(e.clientX-r.left)/r.width-.5;my=(e.clientY-r.top)/r.height-.5;});
+  let depT=0,heroOn=true,last=performance.now();
+  function renderHero(dt){
+    const t=performance.now()/1000;
+    if(!reduce){world.rotation.y=Math.sin(t*.18)*.12+mx*.25;world.rotation.x=my*.08;panel.position.y=.12+Math.sin(t*.9)*.03;}
+    world.updateMatrixWorld(true);
+    [[sAg,xAg+.05],[sCu,xCu-.05]].forEach(([s,tx])=>{s.st.forEach((p,i)=>{if(!reduce)p.t+=dt*p.sp;if(p.t>=1){p.t=0;respawn(p,tx);}bez(tmp,p,p.t);s.pos[i*3]=tmp.x;s.pos[i*3+1]=tmp.y;s.pos[i*3+2]=tmp.z;});s.geo.attributes.position.needsUpdate=true;});
+    bub.st.forEach((b,i)=>{if(!reduce){b.a.y+=dt*.25;if(b.a.y>surfaceY){b.a.y=surfaceY-.6;}}bub.pos[i*3]=b.a.x+Math.sin(t*3+i)*.006;bub.pos[i*3+1]=b.a.y;bub.pos[i*3+2]=b.a.z;});bub.geo.attributes.position.needsUpdate=true;
+    depT=reduce?1:(depT+dt/22)%1.15;const f=Math.min(1,depT);
+    depAg.im.count=Math.floor(depAg.n*f);depCu.im.count=Math.floor(depCu.n*Math.max(0,f*1.15-.15));
+    R.render(S,cam);
+    const show=!narrow;chipAg.style.opacity=show?1:0;chipCu.style.opacity=show?1:0;
+    if(show){place(chipAg,new THREE.Vector3(xAg-.05,-CH/2-.1,CD/2));place(chipCu,new THREE.Vector3(xCu+.05,-CH/2-.22,CD/2));}
+  }
+  visible(hero,v=>heroOn=v);
+  function loop(now){requestAnimationFrame(loop);const dt=Math.min(.05,(now-last)/1000);last=now;if(heroOn)renderHero(dt);if(globeOn)renderGlobe(dt);}
+
+  // ---------- GLOBE ----------
+  const gc=document.getElementById('globe'),gbox=gc.parentElement;
+  const G=new THREE.WebGLRenderer({canvas:gc,antialias:true,alpha:true});G.setPixelRatio(Math.min(2,devicePixelRatio||1));
+  const GS=new THREE.Scene();const gcam=new THREE.PerspectiveCamera(32,1,.1,20);gcam.position.set(0,.3,4.2);gcam.lookAt(0,0,0);
+  const earth=new THREE.Group();GS.add(earth);earth.rotation.z=.32;
+  earth.add(new THREE.Mesh(new THREE.SphereGeometry(.985,64,48),new THREE.MeshBasicMaterial({color:0x101821})));
+  // fibonacci dots
+  const N=2600,dp=new Float32Array(N*3);for(let i=0;i<N;i++){const y=1-(i/(N-1))*2,r=Math.sqrt(1-y*y),th=Math.PI*(3-Math.sqrt(5))*i;dp[i*3]=Math.cos(th)*r;dp[i*3+1]=y;dp[i*3+2]=Math.sin(th)*r;}
+  const dg=new THREE.BufferGeometry();dg.setAttribute('position',new THREE.BufferAttribute(dp,3));
+  earth.add(new THREE.Points(dg,new THREE.PointsMaterial({color:0x7d8f9f,size:.02,sizeAttenuation:true})));
+  // lat/lon lines
+  const lineM=new THREE.LineBasicMaterial({color:0x2a3744});
+  for(let lat=-60;lat<=60;lat+=30){const pts=[];for(let lo=0;lo<=360;lo+=6){pts.push(ll(lat,lo,1.0));}earth.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),lineM));}
+  function ll(lat,lon,r){const p=(90-lat)*Math.PI/180,t=(lon+180)*Math.PI/180;return new THREE.Vector3(-r*Math.sin(p)*Math.cos(t),r*Math.cos(p),r*Math.sin(p)*Math.sin(t));}
+  const hot=[[35,105,1],[51,10,.8],[37,-98,.85],[22,79,.75],[36,138,.55],[-25,134,.55],[-14,-51,.5]];
+  const rings=[];
+  hot.forEach(([la,lo,w],i)=>{
+    const p=ll(la,lo,1.005);
+    const glow=new THREE.Sprite(new THREE.SpriteMaterial({map:DOT,color:0xd4824a,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending}));glow.position.copy(p);glow.scale.setScalar(.16+.18*w);earth.add(glow);
+    const ring=new THREE.Mesh(new THREE.RingGeometry(.06,.07,40),new THREE.MeshBasicMaterial({color:0xd4824a,transparent:true,opacity:.8,side:THREE.DoubleSide,depthWrite:false}));
+    ring.position.copy(p);ring.lookAt(p.clone().multiplyScalar(2));earth.add(ring);rings.push({ring,ph:i*.6,w});
+    // vertical beam
+    const beam=new THREE.Mesh(new THREE.CylinderGeometry(.004,.004,.25*w,6),new THREE.MeshBasicMaterial({color:0xd4824a,transparent:true,opacity:.7}));
+    beam.position.copy(ll(la,lo,1+.125*w));beam.lookAt(0,0,0);beam.rotateX(Math.PI/2);earth.add(beam);
+  });
+  // atmosphere rim
+  const atm=new THREE.Mesh(new THREE.SphereGeometry(1.08,48,32),new THREE.ShaderMaterial({transparent:true,side:THREE.FrontSide,depthWrite:false,blending:THREE.AdditiveBlending,
+    uniforms:{c:{value:new THREE.Color(0x4a7aa8)}},vertexShader:'varying vec3 n;void main(){n=normalize(normalMatrix*normal);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
+    fragmentShader:'uniform vec3 c;varying vec3 n;void main(){float i=pow(1.0-abs(dot(n,vec3(0,0,1.))),4.);gl_FragColor=vec4(c*i,i);}'}));GS.add(atm);
+  earth.rotation.y=-1.2;
+  let globeOn=false;
+  function layoutGlobe(){const s=gbox.clientWidth;G.setSize(s,s,false);gcam.aspect=1;gcam.updateProjectionMatrix();renderGlobe(0);}
+  new ResizeObserver(layoutGlobe).observe(gbox);
+  let gdrag=null,gvel=0;
+  gc.addEventListener('pointerdown',e=>{gdrag=e.clientX;gc.setPointerCapture(e.pointerId);});
+  gc.addEventListener('pointermove',e=>{if(gdrag==null)return;gvel=(e.clientX-gdrag)*.006;earth.rotation.y+=gvel;gdrag=e.clientX;});
+  gc.addEventListener('pointerup',()=>gdrag=null);
+  function renderGlobe(dt){const t=performance.now()/1000;if(!reduce&&gdrag==null)earth.rotation.y+=dt*.12;
+    rings.forEach(r=>{const k=reduce?.5:((t*.5+r.ph)%1.6)/1.6;r.ring.scale.setScalar(1+k*3*r.w);r.ring.material.opacity=.8*(1-k);});
+    G.render(GS,gcam);}
+  visible(gbox,v=>globeOn=v);
+
+  layoutHero();layoutGlobe();
+  requestAnimationFrame(loop);
+})();
+</script>
+
+
+<script>
+(function(){
+  // ---------- contact form ----------
+  const FORM_ENDPOINT='https://formsubmit.co/ajax/info@sarix.com.au';
+  const f=document.getElementById('cf'),st=document.getElementById('cf-status'),send=document.getElementById('cf-send');
+  const show=(m,ok)=>{st.hidden=false;st.className='status '+(ok?'ok':'err');st.textContent=m;};
+  f.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const d=Object.fromEntries(new FormData(f).entries());
+    if(d._honey)return;
+    if(!d.name||!d.email||!d.message){show('Please add your name, email and a message.',false);return;}
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email)){show('That email address doesn’t look right. Please check it.',false);return;}
+    send.disabled=true;send.textContent='Sending…';
+    try{
+      const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({name:d.name,organisation:d.organisation||'',email:d.email,topic:d.topic,message:d.message,_subject:'Website enquiry: '+d.topic,_template:'table',_captcha:'false'})});
+      if(!r.ok)throw new Error('HTTP '+r.status);
+      f.reset();show('Thanks, your message has been sent. We’ll be in touch soon.',true);
+    }catch(err){show('The message couldn’t be sent from here. Please email info@sarix.com.au directly.',false);}
+    send.disabled=false;send.textContent='Send message';
+  });
+
+  // ---------- process line 3D ----------
+  if(!window.THREE)return;
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const box=document.getElementById('stage3d'),cv=document.getElementById('line3d'),lblHost=document.getElementById('lbls');
+  const R=new THREE.WebGLRenderer({canvas:cv,antialias:true});R.setPixelRatio(Math.min(2,devicePixelRatio||1));
+  R.outputEncoding=THREE.sRGBEncoding;R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=1.05;R.shadowMap.enabled=true;R.shadowMap.type=THREE.PCFSoftShadowMap;
+  const S=new THREE.Scene();S.background=new THREE.Color(0x0c1218);
+  (function(){const pm=new THREE.PMREMGenerator(R),es=new THREE.Scene();es.add(new THREE.Mesh(new THREE.BoxGeometry(24,12,24),new THREE.MeshBasicMaterial({color:0x10171e,side:THREE.BackSide})));
+    const lp=(w,h,x,y,z,c,i)=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({color:new THREE.Color(c).multiplyScalar(i),side:THREE.DoubleSide}));m.position.set(x,y,z);m.lookAt(0,0,0);es.add(m);};
+    lp(12,3,0,5.8,0,'#ffffff',2.6);lp(3,7,-11.5,1,2,'#cfe0ff',1.4);lp(3,5,11.5,0,-3,'#ffd9b8',1.3);lp(14,1.5,0,-1,11.5,'#ffffff',.6);
+    S.environment=pm.fromScene(es,.03).texture;pm.dispose();})();
+  const cam=new THREE.PerspectiveCamera(34,2,.1,80);
+  const key=new THREE.DirectionalLight(0xffffff,1.5);key.position.set(4,8,6);key.castShadow=true;key.shadow.mapSize.set(2048,2048);Object.assign(key.shadow.camera,{left:-8,right:8,top:5,bottom:-5,near:1,far:25});S.add(key);
+  const fill=new THREE.DirectionalLight(0xffb27a,.6);fill.position.set(-6,2,-4);S.add(fill);S.add(new THREE.AmbientLight(0x2a3846,.6));
+  // floor
+  const floor=new THREE.Mesh(new THREE.PlaneGeometry(30,14),new THREE.MeshStandardMaterial({color:0x080c10,roughness:1,metalness:0,envMapIntensity:.15}));floor.rotation.x=-Math.PI/2;floor.position.y=-1;floor.receiveShadow=true;S.add(floor);
+  const grid=new THREE.GridHelper(16,32,0x1a232c,0x141c23);grid.position.y=-.995;grid.material.transparent=true;grid.material.opacity=.5;S.add(grid);S.fog=new THREE.Fog(0x0c1218,12,26);
+  const M=(c,o={})=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:.5,metalness:.2},o));
+  const glassM=(op=.14)=>new THREE.MeshPhysicalMaterial({color:0xeaf3ff,transparent:true,opacity:op,roughness:.03,metalness:0,clearcoat:1,envMapIntensity:1.5,depthWrite:false});
+  const steel=M(0x9aa3ab,{metalness:1,roughness:.35}),copperM=M(0xb87333,{metalness:1,roughness:.3}),dark=M(0x252d35,{metalness:.5,roughness:.5});
+  const add=(m,p,x=0,y=0,z=0)=>{m.position.set(x,y,z);m.castShadow=true;m.receiveShadow=true;(p||S).add(m);return m;};
+  const box3=(w,h,d,mat,p,x,y,z)=>add(new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat),p,x,y,z);
+  const cyl=(rt,rb,h,mat,p,x,y,z,seg=32)=>add(new THREE.Mesh(new THREE.CylinderGeometry(rt,rb,h,seg),mat),p,x,y,z);
+  function dotTex(){const c=document.createElement('canvas');c.width=c.height=64;const g=c.getContext('2d');const gr=g.createRadialGradient(32,32,0,32,32,32);gr.addColorStop(0,'rgba(255,255,255,1)');gr.addColorStop(.35,'rgba(255,255,255,.5)');gr.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=gr;g.fillRect(0,0,64,64);return new THREE.CanvasTexture(c);}
+  const DOT=dotTex();
+  const LABELS=[];const lab=(obj,v,text,cls)=>{const d=document.createElement('div');d.className='lbl3d '+(cls||'');d.innerHTML=text;lblHost.appendChild(d);LABELS.push({obj,v,d});};
+
+  // ===== 1. Exploded solar panel =====
+  const PX=-4.2, panel=new THREE.Group();S.add(panel);panel.position.set(PX,.25,0);panel.rotation.set(-.35,.55,0);
+  function cellTex(){const cw=128,gap=6,cols=6,rows=10,W=cols*(cw+gap)+gap,H=rows*(cw+gap)+gap;const c=document.createElement('canvas');c.width=W;c.height=H;const g=c.getContext('2d');
+    g.clearRect(0,0,W,H);
+    for(let r=0;r<rows;r++)for(let k=0;k<cols;k++){const x=gap+k*(cw+gap),y=gap+r*(cw+gap),cut=15;const gr=g.createLinearGradient(x,y,x+cw,y+cw);gr.addColorStop(0,'#0d1626');gr.addColorStop(.5,'#13213a');gr.addColorStop(1,'#0a1220');g.fillStyle=gr;
+      g.beginPath();g.moveTo(x+cut,y);g.lineTo(x+cw-cut,y);g.lineTo(x+cw,y+cut);g.lineTo(x+cw,y+cw-cut);g.lineTo(x+cw-cut,y+cw);g.lineTo(x+cut,y+cw);g.lineTo(x,y+cw-cut);g.lineTo(x,y+cut);g.closePath();g.fill();
+      g.strokeStyle='rgba(225,232,238,.35)';g.lineWidth=1;for(let f=y+3;f<y+cw;f+=3.2){g.beginPath();g.moveTo(x+1,f);g.lineTo(x+cw-1,f);g.stroke();}}
+    g.fillStyle='#e6ebef';for(let k=0;k<cols;k++)for(let b=1;b<=5;b++){g.fillRect(gap+k*(cw+gap)+b*cw/6-1.2,0,2.4,H);}
+    const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;t.anisotropy=8;return t;}
+  function ribbonTex(){const c=document.createElement('canvas');c.width=822;c.height=1346;const g=c.getContext('2d');g.clearRect(0,0,c.width,c.height);
+    g.fillStyle='#c8743c';for(let k=0;k<6;k++)for(let b=1;b<=5;b++){g.fillRect(6+k*134+b*128/6-3,0,6,c.height);}
+    g.fillRect(0,0,c.width,10);g.fillRect(0,c.height-10,c.width,10);const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;return t;}
+  const PW=1.6,PH=2.6;
+  const layers=[];
+  const L=(mat,dz,name)=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(PW,PH),mat);panel.add(m);layers.push({m,dz});return m;};
+  L(new THREE.MeshPhysicalMaterial({color:0xeef6ff,transparent:true,opacity:.22,roughness:.02,clearcoat:1,side:THREE.DoubleSide,depthWrite:false,envMapIntensity:1.6}),.42,'glass');
+  L(new THREE.MeshStandardMaterial({color:0xf2f4e8,transparent:true,opacity:.18,side:THREE.DoubleSide,depthWrite:false}),.26,'eva');
+  L(new THREE.MeshPhysicalMaterial({map:cellTex(),transparent:true,roughness:.35,metalness:.2,clearcoat:.6,side:THREE.DoubleSide}),.1,'cells');
+  L(new THREE.MeshStandardMaterial({map:ribbonTex(),transparent:true,metalness:.9,roughness:.3,side:THREE.DoubleSide,emissive:0x3a1a08,emissiveIntensity:.3}),.0,'ribbons');
+  L(new THREE.MeshStandardMaterial({color:0xf5f6f7,roughness:.8,side:THREE.DoubleSide}),-.16,'backsheet');
+  const frame=new THREE.Group();panel.add(frame);const fm=M(0xc3c9ce,{metalness:1,roughness:.28});
+  [[PW+.08,.06,0,PH/2+.03],[PW+.08,.06,0,-PH/2-.03]].forEach(a=>box3(a[0],a[1],.09,fm,frame,a[2],a[3],0));[-PW/2-.03,PW/2+.03].forEach(x=>box3(.06,PH+.06,.09,fm,frame,x,0,0));
+  const jb=box3(.32,.22,.06,dark,panel,0,-PH/2+.35,-.2);
+  lab(panel,new THREE.Vector3(0,PH/2+.25,0),'<b>1</b>End-of-life panel','big');
+  lab(panel,new THREE.Vector3(PW/2+.05,.9,.42),'Glass','small');lab(panel,new THREE.Vector3(PW/2+.05,.3,.1),'Cells · silver fingers','small');lab(panel,new THREE.Vector3(PW/2+.05,-.3,0),'Copper ribbons','small');lab(panel,new THREE.Vector3(PW/2+.05,-.9,-.16),'Backsheet','small');
+
+  // ===== 2. Leach reactor =====
+  const LX=-1.5, leach=new THREE.Group();S.add(leach);leach.position.set(LX,-1,0);
+  cyl(.62,.66,.12,dark,leach,0,.06,0);
+  const jacket=cyl(.6,.6,1.5,glassM(.12),leach,0,.9,0);jacket.castShadow=false;
+  const inner=cyl(.48,.48,1.4,glassM(.18),leach,0,.9,0);inner.castShadow=false;
+  const liqL=cyl(.46,.46,1.0,new THREE.MeshPhysicalMaterial({color:0x7fc9b6,transparent:true,opacity:.45,roughness:.1,depthWrite:false,emissive:0x0d3a30,emissiveIntensity:.4}),leach,0,.68,0);liqL.castShadow=false;
+  const hp=[];for(let i=0;i<=280;i++){const a=i/280*Math.PI*2*7;hp.push(new THREE.Vector3(Math.cos(a)*.625,.3+i/280*1.1,Math.sin(a)*.625));}
+  const coil=new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(hp),400,.012,6),copperM);leach.add(coil);
+  cyl(.5,.5,.05,steel,leach,0,1.65,0);
+  const motor=cyl(.12,.12,.3,dark,leach,0,1.85,0);
+  const stir=new THREE.Group();leach.add(stir);stir.position.y=.9;cyl(.015,.015,1.4,steel,stir,0,.2,0,8);box3(.5,.04,.08,steel,stir,0,-.35,0);box3(.08,.04,.5,steel,stir,0,-.35,0);
+  const flakes=[];const flakeM=M(0x1a2638,{metalness:.4,roughness:.4});
+  for(let i=0;i<46;i++){const f=new THREE.Mesh(new THREE.BoxGeometry(.06,.004,.06),flakeM);leach.add(f);flakes.push({f,r:.1+Math.random()*.32,a:Math.random()*6.28,y:.25+Math.random()*.85,s:.6+Math.random()*.8});}
+  lab(leach,new THREE.Vector3(0,2.2,0),'<b>2</b>Leach · &lt;55 °C','big');
+
+  // ===== cells builder =====
+  function lcd(lines,color){const c=document.createElement('canvas');c.width=256;c.height=128;const t=new THREE.CanvasTexture(c);t.encoding=THREE.sRGBEncoding;
+    const draw=(arr)=>{const g=c.getContext('2d');g.fillStyle='#0a1410';g.fillRect(0,0,256,128);g.fillStyle=color;g.font='bold 30px monospace';arr.forEach((s,i)=>g.fillText(s,16,44+i*44));t.needsUpdate=true;};draw(lines);return {t,draw};}
+  function meshTex(){const c=document.createElement('canvas');c.width=c.height=128;const g=c.getContext('2d');g.clearRect(0,0,128,128);g.strokeStyle='#4a5560';g.lineWidth=5;
+    for(let i=-128;i<256;i+=18){g.beginPath();g.moveTo(i,0);g.lineTo(i+128,128);g.stroke();g.beginPath();g.moveTo(i+128,0);g.lineTo(i,128);g.stroke();}const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(3,3);return t;}
+  const MESH=meshTex();
+  function makeCell(X,metalCol,liqCol,name,num,E){
+    const g=new THREE.Group();S.add(g);g.position.set(X,-1,0);
+    const W=1.9,H=1.25,D=1.0;
+    box3(W+.2,.1,D+.2,dark,g,0,.05,0);
+    const tank=box3(W,H,D,glassM(.13),g,0,.1+H/2,0);tank.castShadow=false;
+    const edges=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(W,H,D)),new THREE.LineBasicMaterial({color:0x7d8e9c,transparent:true,opacity:.7}));edges.position.y=.1+H/2;g.add(edges);
+    const liq=box3(W-.04,H*.78,D-.04,new THREE.MeshPhysicalMaterial({color:liqCol,transparent:true,opacity:.32,roughness:.1,depthWrite:false,emissive:liqCol,emissiveIntensity:.12}),g,0,.1+H*.39,0);liq.castShadow=false;
+    const top=.1+H*.78;
+    const plates=[];const n=5;
+    for(let i=0;i<n;i++){const x=-W/2+.3+i*(W-.6)/(n-1);const cath=i%2===0;
+      const pm=cath?M(0x9aa3ab,{metalness:1,roughness:.38}):new THREE.MeshStandardMaterial({color:0x6b7580,metalness:.7,roughness:.5,map:MESH,transparent:true,alphaTest:.1,side:THREE.DoubleSide});
+      const p=box3(.025,H*.85,D*.82,pm,g,x,.1+H*.47,0);plates.push({x,cath,p});
+      const rod=cyl(.014,.014,.4,copperM,g,x,.1+H+.15,0,10);
+      if(i<n-1){const mem=box3(.006,H*.8,D*.84,new THREE.MeshStandardMaterial({color:0xf0dc92,transparent:true,opacity:.35,depthWrite:false}),g,x+(W-.6)/(n-1)/2,.1+H*.46,0);mem.castShadow=false;}}
+    const busC=box3(W*.9,.035,.05,copperM,g,0,.1+H+.35,.22),busA=box3(W*.9,.035,.05,M(0x6b7580,{metalness:.9,roughness:.4}),g,0,.1+H+.35,-.22);
+    // power supply
+    const psu=box3(.75,.45,.5,M(0x2b333b,{metalness:.4,roughness:.5}),g,W/2+.65,.32,.1);
+    const scr=lcd(E,'#6ff0a0');const s=new THREE.Mesh(new THREE.PlaneGeometry(.56,.28),new THREE.MeshBasicMaterial({map:scr.t}));s.position.set(W/2+.65,.36,.351);g.add(s);
+    const cable=(pts,col)=>{const c=new THREE.CatmullRomCurve3(pts.map(p=>new THREE.Vector3(...p)));const m=new THREE.Mesh(new THREE.TubeGeometry(c,40,.018,8),M(col,{roughness:.6}));g.add(m);};
+    cable([[W/2+.45,.55,.2],[W/2+.3,1.2,.4],[W/2-.1,.1+H+.35,.22]],0xb8322a);cable([[W/2+.6,.55,0],[W/2+.4,1.3,-.3],[W/2-.1,.1+H+.35,-.22]],0x1b1b1b);
+    // reference electrode
+    cyl(.012,.012,.9,M(0xe8ecef),g,-W/2+.45,.1+H*.6,.36,8);
+    // deposits
+    const cnt=420,im=new THREE.InstancedMesh(new THREE.IcosahedronGeometry(.028,0),M(metalCol,{metalness:1,roughness:.2,envMapIntensity:1.5}),cnt);im.count=0;g.add(im);const o=new THREE.Object3D();
+    const cath=plates.filter(p=>p.cath);
+    for(let i=0;i<cnt;i++){const p=cath[i%cath.length];const side=Math.random()<.5?-1:1;o.position.set(p.x+side*(.018+Math.random()*.02),.18+Math.random()*(top-.3),(Math.random()-.5)*D*.76);o.rotation.set(Math.random()*6,Math.random()*6,0);const sc=.6+Math.random()*1.2;o.scale.set(sc,sc*1.5,sc);o.updateMatrix();im.setMatrixAt(i,o.matrix);}
+    im.instanceMatrix.needsUpdate=true;
+    // ions drifting to cathodes, O2 bubbles at anodes
+    const ionN=140,ip=new Float32Array(ionN*3),ig=new THREE.BufferGeometry();ig.setAttribute('position',new THREE.BufferAttribute(ip,3));
+    g.add(new THREE.Points(ig,new THREE.PointsMaterial({color:metalCol,size:.05,map:DOT,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending})));
+    const ions=[];for(let i=0;i<ionN;i++){const t=cath[i%cath.length];ions.push({tx:t.x,x:t.x+(Math.random()<.5?-1:1)*(.15+Math.random()*.15),y:.2+Math.random()*(top-.3),z:(Math.random()-.5)*D*.7,sp:.05+Math.random()*.08});}
+    const bubN=60,bp=new Float32Array(bubN*3),bg=new THREE.BufferGeometry();bg.setAttribute('position',new THREE.BufferAttribute(bp,3));
+    g.add(new THREE.Points(bg,new THREE.PointsMaterial({color:0xcfe8ff,size:.035,map:DOT,transparent:true,opacity:.8,depthWrite:false})));
+    const an=plates.filter(p=>!p.cath);const bubs=[];for(let i=0;i<bubN;i++){const a=an[i%an.length];bubs.push({x:a.x+(Math.random()-.5)*.06,y:.2+Math.random()*(top-.3),z:(Math.random()-.5)*D*.7,sp:.2+Math.random()*.25});}
+    // product sheets
+    for(let i=0;i<4;i++)box3(.5,.018,.36,M(metalCol,{metalness:1,roughness:.25}),g,-W/2+.35,.02+i*.022,D/2+.45);
+    lab(g,new THREE.Vector3(0,.1+H+.6,0),'<b>'+num+'</b>'+name,'big');
+    lab(g,new THREE.Vector3(plates[0].x,.1+H+.05,D/2),'Cathode','small');lab(g,new THREE.Vector3(plates[1].x,.1+H*.15,D/2),'Anode','small');
+    lab(g,new THREE.Vector3(W/2+.65,.65,.1),'DC supply','small');
+    return {g,im,cnt,ions,ip,ig,bubs,bp,bg,top,scr,W,H,D};
+  }
+  const cellAg=makeCell(1.4,0xe3e8ec,0x5aa0c8,'Silver cell · Ag⁺ + e⁻ → Ag',3,['E +0.250 V','I  2.60 A']);
+  const cellCu=makeCell(4.6,0xc8743c,0x2f6fd0,'Copper cell · Cu²⁺ + 2e⁻ → Cu',4,['E -0.150 V','I 48.0 A']);
+
+  // pipes with flow
+  function pipe(pts){const c=new THREE.CatmullRomCurve3(pts.map(p=>new THREE.Vector3(...p)));const m=new THREE.Mesh(new THREE.TubeGeometry(c,60,.04,10),new THREE.MeshPhysicalMaterial({color:0xdfe6ec,transparent:true,opacity:.45,roughness:.2,depthWrite:false}));S.add(m);
+    const n=34,p=new Float32Array(n*3),g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(p,3));S.add(new THREE.Points(g,new THREE.PointsMaterial({color:0x8fe3c8,size:.06,map:DOT,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending})));
+    return {c,p,g,n,u:Array.from({length:n},(_,i)=>i/n)};}
+  const pipes=[pipe([[LX+.5,-.2,0],[LX+1.1,-.3,.6],[0.3,-.5,.6],[1.4-.95,-.25,.4]]),pipe([[1.4+.95,-.25,-.4],[3.0,-.55,-.7],[4.6-.95,-.25,-.4]])];
+  // flakes stream: panel -> leach
+  const fsN=60,fsP=new Float32Array(fsN*3),fsG=new THREE.BufferGeometry();fsG.setAttribute('position',new THREE.BufferAttribute(fsP,3));
+  S.add(new THREE.Points(fsG,new THREE.PointsMaterial({color:0xd8dfe6,size:.05,map:DOT,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending})));
+  const fs=Array.from({length:fsN},()=>({t:Math.random(),sp:.15+Math.random()*.1,o:new THREE.Vector3((Math.random()-.5)*1.2,(Math.random()-.5)*2,0)}));
+  const A=new THREE.Vector3(),B=new THREE.Vector3(LX,1.0,0),C1=new THREE.Vector3(),tv=new THREE.Vector3();
+
+  // camera views
+  const VIEWS=[
+    {p:[.3,3.6,9.4],l:[.3,0,0],cap:'The full line, from end-of-life panel to separate silver and copper.'},
+    {p:[-2.4,1.2,4.2],l:[-4.2,.2,0],cap:'Panels are taken apart. Silver sits in the cell fingers; copper is in the ribbons.'},
+    {p:[-.3,1.4,3.6],l:[-1.5,.1,0],cap:'Cell and ribbon fractions are leached below 55 °C, taking silver and copper into solution.'},
+    {p:[2.6,1.2,3.4],l:[1.4,-.1,0],cap:'Held at a controlled potential, silver plates onto the cathodes while copper stays in solution.'},
+    {p:[5.8,1.2,3.4],l:[4.6,-.1,0],cap:'The silver-free solution moves on, and copper plates out as a separate, pure metal.'}];
+  let from={p:new THREE.Vector3(),l:new THREE.Vector3()},to={p:new THREE.Vector3(...VIEWS[0].p),l:new THREE.Vector3(...VIEWS[0].l)},k=1,look=to.l.clone();
+  cam.position.copy(to.p);
+  let yaw=0,pitch=0,drag=null;
+  const btns=[...document.querySelectorAll('.views button')],cap=document.getElementById('cap3d');
+  function go(i){btns.forEach((b,j)=>b.setAttribute('aria-pressed',j===i));cap.textContent=VIEWS[i].cap;from={p:cam.position.clone(),l:look.clone()};
+    to={p:new THREE.Vector3(...VIEWS[i].p),l:new THREE.Vector3(...VIEWS[i].l)};k=reduce?1:0;yaw=0;pitch=0;if(reduce){cam.position.copy(to.p);look.copy(to.l);} }
+  btns.forEach((b,i)=>b.addEventListener('click',()=>go(i)));
+  cv.addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY};cv.setPointerCapture(e.pointerId);});
+  cv.addEventListener('pointermove',e=>{if(!drag)return;yaw=Math.max(-.9,Math.min(.9,yaw-(e.clientX-drag.x)*.005));pitch=Math.max(-.3,Math.min(.5,pitch+(e.clientY-drag.y)*.004));drag={x:e.clientX,y:e.clientY};});
+  ['pointerup','pointercancel'].forEach(t=>cv.addEventListener(t,()=>drag=null));
+
+  function size(){const w=box.clientWidth,h=box.clientHeight;if(!w)return;R.setSize(w,h,false);cam.aspect=w/h;cam.fov=w<760?48:34;cam.updateProjectionMatrix();draw(0);}
+  new ResizeObserver(size).observe(box);
+  let on=false;if('IntersectionObserver' in window)new IntersectionObserver(es=>es.forEach(e=>on=e.isIntersecting)).observe(box);else on=true;
+  const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+  let dep=0,lastLcd=0;const off=new THREE.Vector3();
+  function draw(dt){const t=performance.now()/1000;
+    if(k<1){k=Math.min(1,k+dt/1.6);const e=ease(k);look.lerpVectors(from.l,to.l,e);cam.position.lerpVectors(from.p,to.p,e);}
+    else{off.copy(to.p).sub(to.l);const r=off.length(),th=Math.atan2(off.x,off.z)+yaw,ph=Math.acos(off.y/r)-pitch;cam.position.set(to.l.x+r*Math.sin(ph)*Math.sin(th),to.l.y+r*Math.cos(ph),to.l.z+r*Math.sin(ph)*Math.cos(th));}
+    cam.lookAt(look);
+    // panel explode breathing
+    const ex=reduce?1:(.55+.45*Math.sin(t*.6));
+    layers.forEach(L=>L.m.position.z=L.dz*ex*1.6);frame.position.z=.0;frame.scale.set(1+.04*ex,1+.04*ex,1);
+    // flakes panel->leach
+    panel.updateMatrixWorld();
+    fs.forEach((p,i)=>{if(!reduce)p.t+=dt*p.sp;if(p.t>1)p.t=0;A.copy(p.o).applyMatrix4(panel.matrixWorld);C1.set((A.x+B.x)/2,2.2,(A.z+B.z)/2);const u=p.t,w=1-u;
+      tv.set(0,0,0).addScaledVector(A,w*w).addScaledVector(C1,2*w*u).addScaledVector(B,u*u);fsP[i*3]=tv.x;fsP[i*3+1]=tv.y;fsP[i*3+2]=tv.z;});fsG.attributes.position.needsUpdate=true;
+    // leach
+    if(!reduce){stir.rotation.y+=dt*6;flakes.forEach(f=>{f.a+=dt*f.s*2;f.f.position.set(Math.cos(f.a)*f.r,f.y+Math.sin(t+f.a)*.03,Math.sin(f.a)*f.r);f.f.rotation.set(f.a,f.a*.5,0);});}
+    else flakes.forEach(f=>f.f.position.set(Math.cos(f.a)*f.r,f.y,Math.sin(f.a)*f.r));
+    // pipes
+    pipes.forEach(P=>{for(let i=0;i<P.n;i++){if(!reduce)P.u[i]=(P.u[i]+dt*.18)%1;P.c.getPoint(P.u[i],tv);P.p[i*3]=tv.x;P.p[i*3+1]=tv.y;P.p[i*3+2]=tv.z;}P.g.attributes.position.needsUpdate=true;});
+    // cells
+    dep=reduce?1:(dep+dt/24)%1.1;
+    [cellAg,cellCu].forEach((c,ci)=>{const f=Math.min(1,ci?Math.max(0,dep*1.1-.1):dep);c.im.count=Math.floor(c.cnt*f);
+      c.ions.forEach((o,i)=>{if(!reduce){o.x+=(o.tx-o.x)*dt*o.sp*6;if(Math.abs(o.x-o.tx)<.03){o.x=o.tx+(Math.random()<.5?-1:1)*(.22+Math.random()*.12);o.y=.2+Math.random()*(c.top-.3);}}c.ip[i*3]=o.x;c.ip[i*3+1]=o.y;c.ip[i*3+2]=o.z;});c.ig.attributes.position.needsUpdate=true;
+      c.bubs.forEach((b,i)=>{if(!reduce){b.y+=dt*b.sp;if(b.y>c.top)b.y=.2;}c.bp[i*3]=b.x+Math.sin(t*4+i)*.008;c.bp[i*3+1]=b.y;c.bp[i*3+2]=b.z;});c.bg.attributes.position.needsUpdate=true;});
+    if(t-lastLcd>.5){lastLcd=t;const a=2.6*Math.exp(-dep*2)+.08,cI=48*(0.9+.1*Math.sin(t));cellAg.scr.draw(['E +0.250 V','I  '+a.toFixed(2)+' A']);cellCu.scr.draw(['E -0.150 V','I '+cI.toFixed(1)+' A']);}
+    R.render(S,cam);
+    const w=box.clientWidth,h=box.clientHeight;
+    LABELS.forEach(L=>{tv.copy(L.v);L.obj.localToWorld(tv);tv.project(cam);const vis=tv.z<1&&tv.x>-1.05&&tv.x<1.05&&tv.y>-1.05&&tv.y<1.05;L.d.style.opacity=vis?1:0;L.d.style.left=((tv.x*.5+.5)*w)+'px';L.d.style.top=((-tv.y*.5+.5)*h)+'px';});
+  }
+  let last=performance.now();
+  (function loop(now){requestAnimationFrame(loop);const dt=Math.min(.05,(now-last)/1000);last=now;if(on)draw(dt);})(last);
+  size();
+})();
+</script>
+</body>
+</html>
